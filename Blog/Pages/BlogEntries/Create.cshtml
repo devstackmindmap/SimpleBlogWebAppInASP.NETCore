@@ -1,0 +1,45 @@
+﻿@page
+@model Blog.Pages.BlogEntries.CreateModel
+
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>BlogEntry</h4>
+<hr />
+
+
+
+
+
+
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="BlogEntry.Content" class="control-label"></label>        
+        <textarea id="summernote" asp-for="BlogEntry.Content" class="form-control"></textarea>
+        <span asp-validation-for="BlogEntry.Content" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+<script>
+    $('#summernote').summernote({
+        placeholder: '',
+        tabsize: 2,
+        height: 100
+    });
+</script>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
